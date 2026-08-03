@@ -35,62 +35,155 @@ if (!$post) {
 
 $pageTitle = $post['title'] . ' - DevTalks';
 
+$plainContent = trim(strip_tags($post['content']));
+$wordCount = str_word_count($plainContent);
+$readingTime = max(1, (int) ceil($wordCount / 200));
+
+$isOwner = isset($_SESSION['user_id'])
+    && (int) $_SESSION['user_id'] === (int) $post['user_id'];
+
+$authorInitial = strtoupper(
+    mb_substr($post['username'], 0, 1)
+);
+
+$isUpdated = strtotime($post['updated_at'])
+    > strtotime($post['created_at']);
+
 require 'includes/header.php';
 ?>
 
-<article class="single-post">
-    <header class="single-post-header">
-        <p class="eyebrow">DevTalks story</p>
+<article class="article-page">
+    <div class="article-shell">
 
-        <h1><?= htmlspecialchars($post['title']) ?></h1>
+        <a href="index.php" class="article-back-link">
+            <span>←</span>
+            Back to stories
+        </a>
 
-        <div class="post-meta">
-            <span>By <?= htmlspecialchars($post['username']) ?></span>
-            <span>•</span>
-            <time datetime="<?= htmlspecialchars($post['created_at']) ?>">
-                <?= date('F j, Y', strtotime($post['created_at'])) ?>
-            </time>
-        </div>
+        <header class="article-hero">
+            <div class="article-glow article-glow-one"></div>
+            <div class="article-glow article-glow-two"></div>
 
-        <?php if (
-            isset($_SESSION['user_id'])
-            && (int) $_SESSION['user_id'] === (int) $post['user_id']
-        ): ?>
-            <div class="owner-actions">
-                <a
-                    href="edit-post.php?id=<?= (int) $post['id'] ?>"
-                    class="secondary-button"
-                >
-                    Edit
-                </a>
+            <div class="article-hero-content">
 
-                <form
-                    method="POST"
-                    action="delete-post.php"
-                    onsubmit="return confirm('Are you sure you want to delete this article?');"
-                >
-                    <input
-                        type="hidden"
-                        name="id"
-                        value="<?= (int) $post['id'] ?>"
-                    >
+                <div class="article-top-row">
+                    <span class="article-category">
+                        Developer Story
+                    </span>
 
-                    <input
-                        type="hidden"
-                        name="csrf_token"
-                        value="<?= htmlspecialchars(csrfToken()) ?>"
-                    >
+                    <span class="article-reading-time">
+                        <?= $readingTime ?> min read
+                    </span>
+                </div>
 
-                    <button type="submit" class="danger-button">
-                        Delete
-                    </button>
-                </form>
+                <h1>
+                    <?= htmlspecialchars($post['title']) ?>
+                </h1>
+
+                <p class="article-introduction">
+                    A developer story shared with the DevTalks community.
+                </p>
+
+                <div class="article-author-section">
+                    <div class="article-author">
+                        <div class="article-avatar">
+                            <?= htmlspecialchars($authorInitial) ?>
+                        </div>
+
+                        <div class="article-author-info">
+                            <strong>
+                                <?= htmlspecialchars($post['username']) ?>
+                            </strong>
+
+                            <div class="article-meta">
+                                <time datetime="<?= htmlspecialchars($post['created_at']) ?>">
+                                    <?= date(
+                                        'F j, Y',
+                                        strtotime($post['created_at'])
+                                    ) ?>
+                                </time>
+
+                                <?php if ($isUpdated): ?>
+                                    <span>•</span>
+                                    <span>Updated</span>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <?php if ($isOwner): ?>
+                        <div class="article-owner-actions">
+                            <a
+                                href="edit-post.php?id=<?= (int) $post['id'] ?>"
+                                class="article-edit-button"
+                            >
+                                Edit story
+                            </a>
+
+                            <form
+                                method="POST"
+                                action="delete-post.php"
+                                onsubmit="return confirm(
+                                    'Are you sure you want to delete this story?'
+                                );"
+                            >
+                                <input
+                                    type="hidden"
+                                    name="id"
+                                    value="<?= (int) $post['id'] ?>"
+                                >
+
+                                <input
+                                    type="hidden"
+                                    name="csrf_token"
+                                    value="<?= htmlspecialchars(csrfToken()) ?>"
+                                >
+
+                                <button
+                                    type="submit"
+                                    class="article-delete-button"
+                                >
+                                    Delete
+                                </button>
+                            </form>
+                        </div>
+                    <?php endif; ?>
+                </div>
+
             </div>
-        <?php endif; ?>
-    </header>
+        </header>
 
-    <div class="article-content">
-        <?= nl2br(htmlspecialchars($post['content'])) ?>
+        <section class="article-reading-card">
+            <div class="article-reading-header">
+                <span>Article</span>
+                <span><?= number_format($wordCount) ?> words</span>
+            </div>
+
+            <div class="article-content">
+                <?= nl2br(htmlspecialchars($post['content'])) ?>
+            </div>
+        </section>
+
+        <footer class="article-footer-card">
+            <div class="article-footer-author">
+                <div class="article-avatar article-avatar-small">
+                    <?= htmlspecialchars($authorInitial) ?>
+                </div>
+
+                <div>
+                    <span>Written by</span>
+                    <strong>
+                        <?= htmlspecialchars($post['username']) ?>
+                    </strong>
+                </div>
+            </div>
+
+            <a href="index.php">
+                Explore more stories
+                <span>→</span>
+            </a>
+        </footer>
+
     </div>
 </article>
 
