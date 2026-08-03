@@ -304,3 +304,120 @@ textarea {
         width: 100%;
     }
 }
+/* Responsive navigation */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    background: #17181d;
+    border-bottom: 1px solid #2a2b31;
+}
+
+.site-nav {
+    position: relative;
+    width: min(calc(100% - 40px), 1100px);
+    min-height: 70px;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.site-logo {
+    margin: 0;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.nav-links a {
+    margin: 0;
+    color: #d7d7dc;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.nav-username {
+    color: #9b7cff;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.nav-logout,
+.nav-register {
+    padding: 9px 16px;
+    border-radius: 8px;
+    background: #7c4dff;
+    color: #ffffff !important;
+}
+
+.nav-toggle {
+    display: none;
+    width: 42px;
+    height: 42px;
+    padding: 9px;
+    border: 1px solid #34353d;
+    border-radius: 8px;
+    background: #202127;
+    cursor: pointer;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    margin: 5px 0;
+    background: #ffffff;
+}
+
+@media (max-width: 720px) {
+    .site-nav {
+        width: calc(100% - 32px);
+        min-height: 64px;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 65px;
+        left: 0;
+        right: 0;
+        display: none;
+        padding: 14px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 5px;
+        background: #17181d;
+        border: 1px solid #2c2d34;
+        border-radius: 0 0 12px 12px;
+    }
+
+    .nav-links.is-open {
+        display: flex;
+    }
+
+    .nav-links a,
+    .nav-username {
+        width: 100%;
+        padding: 12px 14px;
+    }
+
+    .nav-logout,
+    .nav-register {
+        text-align: center;
+    }
+}

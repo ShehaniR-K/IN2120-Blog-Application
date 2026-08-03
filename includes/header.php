@@ -18,30 +18,39 @@ if (session_status() === PHP_SESSION_NONE) {
 
 <body>
 
-<header>
-    <nav>
+<header class="site-header">
+    <nav class="site-nav">
         <a href="index.php" class="site-logo">DevTalks</a>
 
-       <div class="nav-links">
-    <a href="index.php">Home</a>
+        <button
+            type="button"
+            class="nav-toggle"
+            id="navToggle"
+            aria-label="Open navigation"
+            aria-expanded="false"
+            aria-controls="navLinks"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
-    <?php if (isset($_SESSION['user_id'])): ?>
+        <div class="nav-links" id="navLinks">
+            <a href="index.php">Home</a>
 
-        <a href="create-post.php">Write</a>
+            <?php if (isset($_SESSION['user_id'])): ?>
+                <a href="create-post.php">Write</a>
 
-        <span class="nav-username">
-            Hello, <?= htmlspecialchars($_SESSION['username']) ?>
-        </span>
+                <span class="nav-username">
+                    Hello, <?= htmlspecialchars($_SESSION['username']) ?>
+                </span>
 
-        <a href="logout.php">Logout</a>
-
-    <?php else: ?>
-
-        <a href="login.php">Login</a>
-        <a href="register.php">Register</a>
-
-    <?php endif; ?>
-</div>
+                <a href="logout.php" class="nav-logout">Logout</a>
+            <?php else: ?>
+                <a href="login.php">Login</a>
+                <a href="register.php" class="nav-register">Register</a>
+            <?php endif; ?>
+        </div>
     </nav>
 </header>
 
