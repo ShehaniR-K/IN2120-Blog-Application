@@ -21,49 +21,127 @@ $posts = $statement->fetchAll();
 require 'includes/header.php';
 ?>
 
-<section class="hero">
-    <p class="eyebrow">Developer community</p>
-    <h1>Ideas, lessons and stories from people who build.</h1>
-    <p>
-        Explore practical articles about programming, software engineering,
-        technology, design and developer careers.
-    </p>
+<!-- Homepage design starts here -->
 
-    <?php if (isset($_SESSION['user_id'])): ?>
-        <a href="create-post.php" class="button-link">Write a story</a>
-    <?php else: ?>
-        <a href="register.php" class="button-link">Join DevTalks</a>
-    <?php endif; ?>
-</section>
+<section class="home-hero">
+    <div class="hero-content">
+        <p class="hero-label">A COMMUNITY FOR DEVELOPERS</p>
 
-<section class="stories-section">
-    <div class="section-heading">
-        <div>
-            <p class="eyebrow">Latest articles</p>
-            <h2>Developer stories</h2>
+        <h1>
+            Learn, build and share with
+            <span>DevTalks.</span>
+        </h1>
+
+        <p class="hero-description">
+            Discover practical stories about programming, software,
+            technology, design and developer careers.
+        </p>
+
+        <div class="hero-actions">
+            <?php if (isset($_SESSION['user_id'])): ?>
+                <a href="create-post.php" class="primary-action">
+                    Write an article
+                </a>
+            <?php else: ?>
+                <a href="register.php" class="primary-action">
+                    Join DevTalks
+                </a>
+
+                <a href="login.php" class="secondary-action">
+                    Sign in
+                </a>
+            <?php endif; ?>
         </div>
     </div>
 
-    <?php if (empty($posts)): ?>
-        <div class="empty-state">
-            <h3>No articles published yet</h3>
-            <p>Be the first person to publish a story on DevTalks.</p>
+    <div class="hero-code-card">
+        <div class="code-card-header">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
+
+        <pre><code>const developer = {
+    learn: true,
+    build: true,
+    share: true
+};
+
+developer.join("DevTalks");</code></pre>
+    </div>
+</section>
+
+<section class="topic-section">
+    <div class="topic-card">
+        <span>01</span>
+        <h3>Web Development</h3>
+        <p>Frontend, backend and full-stack development.</p>
+    </div>
+
+    <div class="topic-card">
+        <span>02</span>
+        <h3>Programming</h3>
+        <p>Languages, concepts and practical coding lessons.</p>
+    </div>
+
+    <div class="topic-card">
+        <span>03</span>
+        <h3>Technology</h3>
+        <p>Tools, trends and modern software engineering.</p>
+    </div>
+
+    <div class="topic-card">
+        <span>04</span>
+        <h3>Developer Career</h3>
+        <p>Skills, interviews and career development.</p>
+    </div>
+</section>
+
+<section class="latest-section">
+    <div class="section-title-row">
+        <div>
+            <p class="section-label">LATEST STORIES</p>
+            <h2>Ideas from developers</h2>
+        </div>
+
+        <?php if (isset($_SESSION['user_id'])): ?>
+            <a href="create-post.php" class="write-link">
+                Write a story →
+            </a>
+        <?php endif; ?>
+    </div>
+
+    <?php if (empty($posts)): ?>
+
+        <div class="empty-state">
+            <h3>No stories published yet</h3>
+            <p>Publish the first developer story on DevTalks.</p>
+        </div>
+
     <?php else: ?>
-        <div class="post-grid">
-            <?php foreach ($posts as $post): ?>
+
+        <div class="article-grid">
+            <?php foreach ($posts as $index => $post): ?>
                 <?php
                 $plainContent = trim(strip_tags($post['content']));
 
-                $excerpt = mb_strlen($plainContent) > 180
-                    ? mb_substr($plainContent, 0, 180) . '...'
+                $excerpt = mb_strlen($plainContent) > 160
+                    ? mb_substr($plainContent, 0, 160) . '...'
                     : $plainContent;
                 ?>
 
-                <article class="post-card">
-                    <div class="post-meta">
-                        <span><?= htmlspecialchars($post['username']) ?></span>
+                <article class="article-card <?= $index === 0 ? 'featured-card' : '' ?>">
+                    <div class="article-category">
+                        Developer Story
+                    </div>
+
+                    <div class="article-meta">
+                        <span>
+                            <?= htmlspecialchars($post['username']) ?>
+                        </span>
+
                         <span>•</span>
+
                         <time datetime="<?= htmlspecialchars($post['created_at']) ?>">
                             <?= date('M j, Y', strtotime($post['created_at'])) ?>
                         </time>
@@ -75,17 +153,20 @@ require 'includes/header.php';
                         </a>
                     </h3>
 
-                    <p><?= htmlspecialchars($excerpt) ?></p>
+                    <p>
+                        <?= htmlspecialchars($excerpt) ?>
+                    </p>
 
                     <a
                         href="post.php?id=<?= (int) $post['id'] ?>"
-                        class="read-more"
+                        class="article-link"
                     >
                         Read article →
                     </a>
                 </article>
             <?php endforeach; ?>
         </div>
+
     <?php endif; ?>
 </section>
 
