@@ -97,3 +97,210 @@ input:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0 1000px #111216 inset;
     transition: background-color 5000s ease-in-out 0s;
 }
+.hero {
+    padding: 90px 0 70px;
+    max-width: 850px;
+}
+
+.hero h1 {
+    margin: 10px 0 20px;
+    font-size: clamp(42px, 7vw, 78px);
+    line-height: 1;
+    letter-spacing: -3px;
+}
+
+.hero > p:not(.eyebrow) {
+    max-width: 700px;
+    color: #b4b4bd;
+    font-size: 19px;
+    line-height: 1.7;
+}
+
+.eyebrow {
+    margin: 0 0 10px;
+    color: #9b7cff;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.button-link,
+.secondary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.button-link {
+    margin-top: 20px;
+    background: #7c4dff;
+    color: #ffffff;
+}
+
+.stories-section {
+    padding-bottom: 80px;
+}
+
+.section-heading {
+    margin-bottom: 28px;
+}
+
+.section-heading h2 {
+    margin: 0;
+    font-size: 34px;
+}
+
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.post-card {
+    padding: 26px;
+    background: #191a20;
+    border: 1px solid #2c2d34;
+    border-radius: 14px;
+}
+
+.post-card h3 {
+    margin: 14px 0 12px;
+    font-size: 24px;
+    line-height: 1.25;
+}
+
+.post-card h3 a,
+.read-more {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.post-card p {
+    color: #b2b2bb;
+    line-height: 1.7;
+}
+
+.read-more {
+    display: inline-block;
+    margin-top: 10px;
+    color: #a98cff;
+    font-weight: 700;
+}
+
+.post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    color: #8e8e98;
+    font-size: 14px;
+}
+
+.single-post {
+    max-width: 820px;
+    margin: 60px auto 100px;
+}
+
+.single-post-header h1 {
+    margin: 10px 0 20px;
+    font-size: clamp(40px, 6vw, 70px);
+    line-height: 1.05;
+    letter-spacing: -2px;
+}
+
+.article-content {
+    margin-top: 48px;
+    color: #dedee3;
+    font-size: 19px;
+    line-height: 1.9;
+}
+
+.owner-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.owner-actions form {
+    margin: 0;
+}
+
+.owner-actions button {
+    width: auto;
+}
+
+.secondary-button {
+    background: #292a31;
+    color: #ffffff;
+}
+
+.danger-button {
+    padding: 12px 20px;
+    background: #b6384c;
+}
+
+.editor-card {
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 34px;
+    background: #191a20;
+    border: 1px solid #2c2d34;
+    border-radius: 14px;
+}
+
+.page-heading {
+    margin-bottom: 30px;
+}
+
+textarea {
+    width: 100%;
+    padding: 14px;
+    resize: vertical;
+    border: 1px solid #3b3c45;
+    border-radius: 7px;
+    background: #111216;
+    color: #ffffff;
+    font: inherit;
+    line-height: 1.7;
+}
+
+.empty-state {
+    padding: 50px;
+    text-align: center;
+    background: #191a20;
+    border: 1px solid #2c2d34;
+    border-radius: 14px;
+}
+
+@media (max-width: 720px) {
+    .post-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        padding-top: 60px;
+    }
+
+    .hero h1 {
+        letter-spacing: -2px;
+    }
+
+    .editor-card {
+        padding: 22px;
+    }
+
+    .owner-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .owner-actions form,
+    .owner-actions button,
+    .secondary-button {
+        width: 100%;
+    }
+}
