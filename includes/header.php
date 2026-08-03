@@ -22,24 +22,26 @@ if (session_status() === PHP_SESSION_NONE) {
     <nav>
         <a href="index.php" class="site-logo">DevTalks</a>
 
-        <div class="nav-links">
-            <a href="index.php">Home</a>
+       <div class="nav-links">
+    <a href="index.php">Home</a>
 
-            <?php if (isset($_SESSION['user_id'])): ?>
+    <?php if (isset($_SESSION['user_id'])): ?>
 
-                <span class="nav-username">
-                    Hello, <?= htmlspecialchars($_SESSION['username']) ?>
-                </span>
+        <a href="create-post.php">Write</a>
 
-                <a href="logout.php">Logout</a>
+        <span class="nav-username">
+            Hello, <?= htmlspecialchars($_SESSION['username']) ?>
+        </span>
 
-            <?php else: ?>
+        <a href="logout.php">Logout</a>
 
-                <a href="login.php">Login</a>
-                <a href="register.php">Register</a>
+    <?php else: ?>
 
-            <?php endif; ?>
-        </div>
+        <a href="login.php">Login</a>
+        <a href="register.php">Register</a>
+
+    <?php endif; ?>
+</div>
     </nav>
 </header>
 
