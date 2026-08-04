@@ -1410,66 +1410,139 @@ textarea {
     transform: translateX(4px);
 }
 
-@media (max-width: 700px) {
-    .article-page {
-        padding: 34px 0 75px;
+/* =====================================
+   POST COVER IMAGE FINAL
+===================================== */
+
+.post-cover-image {
+
+    width:100%;
+
+    height:360px;
+
+    overflow:hidden;
+
+    border-radius:24px;
+
+    margin-bottom:35px;
+
+}
+
+
+.post-cover-image img {
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    object-position:center;
+
+    display:block;
+
+}
+@media(max-width:700px){
+
+    .post-cover-image {
+
+        height:240px;
+
     }
 
-    .article-hero {
-        padding: 30px 23px;
-        border-radius: 18px;
-    }
+}
 
-    .article-top-row {
-        align-items: flex-start;
-        flex-direction: column;
-    }
+/* =====================================
+   ARTICLE HERO SPACING
+===================================== */
 
-    .article-hero h1 {
-        margin-top: 27px;
-        font-size: 50px;
-        letter-spacing: -3px;
-    }
 
-    .article-introduction {
-        font-size: 16px;
-    }
+.article-hero {
 
-    .article-author-section {
-        align-items: stretch;
-        flex-direction: column;
-    }
+    overflow:hidden;
 
-    .article-owner-actions {
-        width: 100%;
-    }
+}
 
-    .article-owner-actions form,
-    .article-edit-button,
-    .article-delete-button {
-        width: 100%;
-    }
 
-    .article-reading-card {
-        padding: 30px 23px;
-        border-radius: 18px;
-    }
+.article-hero-content {
 
-    .article-reading-header {
-        margin-bottom: 35px;
-    }
+    position:relative;
 
-    .article-content {
-        font-size: 18px;
-        line-height: 1.9;
-    }
+    z-index:2;
 
-    .article-content::first-letter {
-        font-size: 58px;
-    }
+}
 
-    .article-footer-card {
-        align-items: flex-start;
-        flex-direction: column;
-    }
+
+
+/* =====================================
+   HOMEPAGE ARTICLE IMAGE
+===================================== */
+
+
+.article-card .article-image {
+
+    width:100%;
+
+    height:240px;
+
+    overflow:hidden;
+
+    border-radius:16px;
+
+    margin-bottom:20px;
+
+}
+
+
+.article-card .article-image img {
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+
+
+/* Featured homepage card */
+
+.featured-card .article-image {
+
+    height:340px;
+
+}
+
+
+
+/* =====================================
+   MOBILE FIX
+===================================== */
+
+
+@media(max-width:700px){
+
+
+.post-cover-image img {
+
+    max-height:350px;
+
+}
+
+
+.article-card .article-image {
+
+    height:220px;
+
+}
+
+
+.featured-card .article-image {
+
+    height:260px;
+
+}
+
+
 }

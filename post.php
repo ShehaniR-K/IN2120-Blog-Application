@@ -12,13 +12,14 @@ if (!$postId) {
 
 $statement = $pdo->prepare(
     'SELECT
-        blogPost.id,
-        blogPost.user_id,
-        blogPost.title,
-        blogPost.content,
-        blogPost.created_at,
-        blogPost.updated_at,
-        user.username
+    blogPost.id,
+    blogPost.user_id,
+    blogPost.title,
+    blogPost.content,
+    blogPost.image,
+    blogPost.created_at,
+    blogPost.updated_at,
+    user.username
      FROM blogPost
      INNER JOIN user ON blogPost.user_id = user.id
      WHERE blogPost.id = :id
@@ -63,6 +64,20 @@ require 'includes/header.php';
         <header class="article-hero">
             <div class="article-glow article-glow-one"></div>
             <div class="article-glow article-glow-two"></div>
+
+                 
+<?php if (!empty($post['image'])): ?>
+
+    <div class="post-cover-image">
+
+        <img
+            src="uploads/posts/<?= htmlspecialchars($post['image']) ?>"
+            alt="<?= htmlspecialchars($post['title']) ?>"
+        >
+
+    </div>
+
+<?php endif; ?>
 
             <div class="article-hero-content">
 
