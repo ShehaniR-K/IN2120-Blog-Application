@@ -1546,3 +1546,263 @@ textarea {
 
 
 }
+/* =========================
+   Hero Video Background
+========================= */
+
+
+.home-hero {
+
+   
+    position: relative;
+
+    min-height: calc(100vh - 80px);
+
+    overflow: hidden;
+
+    display:flex;
+
+    align-items:center;
+
+    padding-left:80px;
+
+    padding-right:80px;
+
+}
+
+
+.hero-background-video {
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    object-position:center;
+
+    z-index:0;
+}
+
+
+
+.hero-video-overlay {
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    linear-gradient(
+        90deg,
+       rgba(16,17,20,0.65),
+        rgba(16,17,20,0.65)
+    );
+
+    z-index:1;
+
+}
+.hero-content {
+
+    max-width:1200px;
+
+    width:100%;
+
+    margin:auto;
+
+}
+/* =========================
+   Premium Hero Code Card
+========================= */
+
+.hero-code-card {
+
+    width: 460px;
+    min-height: 360px;
+
+    background:
+    linear-gradient(
+        145deg,
+        rgba(42,34,70,0.96),
+        rgba(15,16,25,0.98)
+    );
+
+    border: 1px solid rgba(255,255,255,0.15);
+
+    border-radius: 28px;
+
+    padding: 32px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 30px 90px rgba(0,0,0,0.55),
+        inset 0 1px 0 rgba(255,255,255,0.08);
+
+    transform: rotate(-3deg);
+
+    margin-right:40px;
+
+    margin-top:20px;
+
+}
+
+
+/* Purple glow */
+
+.hero-code-card::before {
+
+    content:"";
+
+    position:absolute;
+
+    width:260px;
+
+    height:260px;
+
+    background:#8b5cf6;
+
+    filter:blur(110px);
+
+    opacity:0.25;
+
+    top:-120px;
+
+    right:-100px;
+
+}
+
+
+/* Browser dots */
+
+.code-card-header {
+
+    display:flex;
+
+    gap:10px;
+
+    margin-bottom:30px;
+
+}
+
+
+.code-card-header span {
+
+    width:14px;
+
+    height:14px;
+
+    border-radius:50%;
+
+}
+
+
+.code-card-header span:first-child {
+    background:#ff5f57;
+}
+
+.code-card-header span:nth-child(2) {
+    background:#febc2e;
+}
+
+.code-card-header span:nth-child(3) {
+    background:#28c840;
+}
+
+
+/* Code text */
+
+.hero-code-card pre {
+
+    margin:0;
+
+    padding:0;
+
+    overflow:hidden;
+
+    white-space:pre-wrap;
+
+    word-break:normal;
+
+    color:#c4b5fd;
+
+    font-size:18px;
+
+    line-height:1.8;
+
+    font-family:
+    "JetBrains Mono",
+    "Fira Code",
+    monospace;
+
+}
+/* Fix hero text visibility */
+
+.home-hero {
+    position: relative;
+    overflow: hidden;
+}
+
+
+.hero-background-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+
+.hero-video-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10,10,15,0.65);
+    z-index: 1;
+}
+
+
+.home-hero .hero-content {
+    position: relative;
+    z-index: 5;
+}
+
+
+.hero-content h1 {
+    color: #ffffff;
+}
+
+
+.hero-content h1 span {
+    color: #8b5cf6;
+}
+
+
+.hero-label {
+    color: #bda5ff;
+}
+
+
+.hero-description {
+    color: #d0d0d8;
+}
+
+
+.hero-actions {
+    position: relative;
+    z-index: 6;
+}
+
+
+.hero-code-card {
+    position: relative;
+    z-index: 5;
+}

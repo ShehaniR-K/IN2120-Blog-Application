@@ -30,6 +30,17 @@ require 'includes/header.php';
 
 
 <section class="home-hero">
+    <video class="hero-background-video"
+       autoplay
+       muted
+       loop
+       playsinline>
+
+    <source src="assets/videos/dev-bg.mp4" type="video/mp4">
+
+</video>
+
+<div class="hero-video-overlay"></div>
 
     <div class="hero-content">
 
