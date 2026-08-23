@@ -1,6 +1,4 @@
-CREATE DATABASE IF NOT EXISTS blog_application;
-USE blog_application;
-
+USE if0_42730503_devtalks;
 CREATE TABLE user (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(100) NOT NULL,
