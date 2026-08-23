@@ -49,6 +49,7 @@ if (session_status() === PHP_SESSION_NONE) {
             <?php if (isset($_SESSION['user_id'])): ?>
 
                 <a href="create-post.php">Write</a>
+<a href="profile.php">Profile</a>
 
                 <span class="nav-username">
                     Hello, <?= htmlspecialchars($_SESSION['username']) ?>
